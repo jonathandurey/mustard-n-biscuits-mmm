@@ -1,0 +1,68 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Castle.Activerecord" Version="3.0.0.1" />
+    <PackageReference Include="Castle.Core" Version="4.4.0" />
+    <PackageReference Include="Castle.Windsor" Version="5.0.1" />
+    <PackageReference Include="Microsoft.AspNet.WebApi" Version="5.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.Xaml" Version="4.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EBBDataServices\EBBDataServices.csproj" />
+    <ProjectReference Include="..\EBBModels\EBBModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>bin\Debug\netcoreapp2.1\Antlr3.Runtime.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="ensyte.model">
+      <HintPath>..\..\PROD_PNG_052218_old\bin\ensyte.model.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="ensyte.model.nom">
+      <HintPath>..\..\PROD_PNG_052218_old\bin\ensyte.model.nom.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="ensyte.process">
+      <HintPath>..\..\PROD_PNG_052218_old\bin\ensyte.process.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\..\PROD_PNG_052218_old\bin\NHibernate.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle">
+      <HintPath>bin\Debug\netcoreapp2.1\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.LinFu">
+      <HintPath>..\..\PROD_PNG_052218_old\bin\NHibernate.ByteCode.LinFu.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <HintPath>..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="System.Web">
+      <HintPath>..\..\PROD_PNG_052218_old\bin\system.web.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>
