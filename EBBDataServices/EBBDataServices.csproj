@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EBBDataLayer\EBBDataLayer.csproj" />
+    <ProjectReference Include="..\EBBEntities\EBBEntities.csproj" />
+    <ProjectReference Include="..\EBBModels\EBBModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ensyte.model">
+      <HintPath>..\..\PROD_PNG_052218_old\bin\ensyte.model.dll</HintPath>
+    </Reference>
+    <Reference Include="ensyte.model.nom">
+      <HintPath>..\..\PROD_PNG_052218_old\bin\ensyte.model.nom.dll</HintPath>
+    </Reference>
+    <Reference Include="ensyte.process">
+      <HintPath>..\..\PROD_PNG_052218_old\bin\ensyte.process.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="ensyte.process.nom">
+      <HintPath>..\..\PROD_PNG_052218_old\bin\ensyte.process.nom.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
