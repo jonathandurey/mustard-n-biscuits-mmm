@@ -1,0 +1,336 @@
+﻿@using EBBModels.Models;
+@model BaseViewModel
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <style>
+        .mid_cont {
+            top:-20px;
+            background: #fff;
+            border-radius: 15px;
+            min-height: 650px;
+            max-width: 85%;
+            box-shadow: 1px 1px 5px 1px #a1a1a1;
+            padding: 15px;
+            position: relative;
+        }
+
+        a:hover {
+     text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18;
+        }
+
+        .shadow-label {
+            text-shadow: 0 0 10px #87d1ff;
+        }
+
+        .black-on-white{
+            background-color:black;
+            color:white;
+        }
+        .navbar-custom {
+            background: linear-gradient(-45deg,#4a4848, #000000 );
+            background-size: 400% 400%;
+            -webkit-animation: Gradient 20s ease infinite;
+            -moz-animation: Gradient 20s ease infinite;
+            animation: Gradient 20s ease infinite;
+        }
+
+        .main_cont {
+            width: 100%;
+            height: 100%;
+            margin: 0px auto;
+            min-height: 800px; 
+            min-width:2000px;
+            background: linear-gradient(-45deg,#c2c2c2, #918d8d, #000000,#009dff,#87d1ff );
+            background-size: 400% 400%;
+            -webkit-animation: Gradient 20s ease infinite;
+            -moz-animation: Gradient 20s ease infinite;
+            animation: Gradient 20s ease infinite;
+        }
+
+
+        @@-webkit-keyframes Gradient {
+            0% {
+                background-position: 0% 50%
+            }
+
+            50% {
+                background-position: 100% 50%
+            }
+
+            100% {
+                background-position: 0% 50%
+            }
+        }
+
+        @@-moz-keyframes Gradient {
+            0% {
+                background-position: 0% 50%
+            }
+
+            50% {
+                background-position: 100% 50%
+            }
+
+            100% {
+                background-position: 0% 50%
+            }
+        }
+
+        .naveMenuItem:hover {
+            background-color:#000000;
+            text-shadow: 0 0 10px #FFFFFF;
+        }
+
+
+        .sidenav {
+            width: 0;
+            position: relative;
+            margin-left: -20px;
+            margin-top: 20px;
+            float: left;
+            z-index: 1;
+            top: 0;
+            background-color: white;
+            border-radius: 5px;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 40px;
+        }
+
+            .sidenav a {
+                padding: 0px 8px 8px 32px;
+                font-size: 16px;
+                display: block;
+                transition: 0.3s;
+            }
+
+
+
+            .sidenav .closebtn {
+                position: absolute;
+                top: 0;
+                font-size: 36px;
+                margin-left: 120px;
+                color: red;
+            }
+
+        #sideMenu {
+            transition: margin-left .5s;
+            padding: 16px;
+        }
+
+        @@media screen and (max-height: 450px) {
+            .sidenav {
+                padding-top: 15px;
+            }
+
+                .sidenav a {
+                    font-size: 12px;
+                }
+        }
+    </style>
+    <title>GasStar - Ensyte</title>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/css/selectize.min.css" />
+
+
+    <script>
+        $(function () {
+
+        });
+        function openNav() {
+            $('#mySidenav').css('width', '175');
+            $('#btnMenuOpen').hide();
+            //document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            $('#btnMenuOpen').show();
+        }
+    </script>
+
+
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/js/standalone/selectize.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/store.js/1.3.20/store.min.js"></script>
+
+
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js" defer></script>
+
+    <link rel="preconnect" href="https://maxcdn.bootstrapcdn.com" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Scripts/jquery-ui.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+
+
+    @* Spectrum color picker polyfill for IE. http://bgrins.github.io/spectrum/ *@
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.js"></script>
+
+    @RenderSection("Header", false)
+</head>
+<body>
+    <div class="main_cont">
+        <br />
+        <br />
+        <br />
+
+        <div class="row">
+            <div class="col-lg-3">
+
+            </div>
+            <div class="col-lg-9">
+
+            </div>
+        </div>
+        <div class="container mid_cont">
+
+            <div class="row">
+                <div class="col-lg-2" style="top:20px; left:20px;">
+                    <img src="http://ensyte.com/wp-content/uploads/2016/04/lolgo.png" />
+                    <br />
+                    <br />
+                    <div class="container">
+
+                        <span id="btnMenuOpen" style="font-size:30px;cursor:pointer;" onclick="openNav()"><i class="fas fa-bars"></i> </span>
+                        <div id="mySidenav" class="sidenav">
+                            <h4>Menu</h4>  <a href="javascript:void(0)" id="btnMenuClose" class="closebtn" onclick="closeNav()">&times;</a>
+                            <hr />
+                            <div class="well" style="color:white;">
+                                <a href="#">Dashboard</a>
+                                <a href="#">Reports</a>
+                                <a href="#">Clients</a>
+                                <a href="#">Employees</a>
+                            </div>
+
+                            <hr />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div style="text-align:right;"><h4 class="shadow-label"><i>@Model.Title</i></h4></div><br />
+                    <nav class="navbar navbar-inverse navbar-custom">
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" style="cursor:initial;" href="#"><img src="http://ensyte.com/wp-content/uploads/2018/02/GASTAR-BLUE-1.png" style="width:40px; height:40px; margin-top:-5px;" /></a>
+                            </div>
+                            <ul class="nav navbar-nav navbar-custom">
+                                <li><a href="#">Home</a></li>
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                        Main Menu
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu" >
+                                        <li><a class="naveMenuItem" href="#"  >Display Pool Customer Data</a></li>
+                                        <li><a class="naveMenuItem" href="#">Customer Enrollment</a></li>
+                                        <li><a class="naveMenuItem" href="#">Pool Nominations</a></li>
+                                        <li><a class="naveMenuItem" href="#">Imbalance Trade</a></li>
+                                        <li><a class="naveMenuItem" href="#">Daily Pool Report & Invoice</a></li>
+                                        <li><a class="naveMenuItem" href="#">Non-daily Pool Report & Invoice</a></li>
+                                        <li><a class="naveMenuItem" href="#">Pool Nominations</a></li>
+                                        <li><a class="naveMenuItem" href="#">Imbalance Trade</a></li>
+                                        <li><a class="naveMenuItem" href="~/Account/InvoiceSummaryList">Invoice Summary</a></li>
+
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                        My Gastar
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="naveMenuItem" href="#">Dashboard</a></li>
+                                        <li><a class="naveMenuItem" href="#">Account</a></li>
+                                        <li><a class="naveMenuItem" href="#">Messages</a></li>
+                                        <li><a class="naveMenuItem" href="#">Documents</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                        Help
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="naveMenuItem" href="#">About</a></li>
+                                        <li><a class="naveMenuItem" href="#">Documentation</a></li>
+                                        <li><a class="naveMenuItem" href="#">Technical Support</a></li>
+                                        <li><a class="naveMenuItem" href="#">Gastar FAQs</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#" id="lnkOriginalGastar">Original Gastar</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+            <hr />
+            <div class="row">
+                <div class="col-lg-2">
+                </div>
+                <div class="col-lg-10">
+
+                    <div style="margin-top:-350px; margin-left:20px;">
+                        @{ if (Model.ErrorMessages.Count > 0)
+                            {
+                                <div class="alert alert-danger">
+                                    <h3>Error <i class="fas fa-exclamation-triangle"></i></h3>
+                                    @foreach (var msg in Model.ErrorMessages)
+                                    {
+                                        <span>@msg</span><br />
+                                    }
+                                </div>
+                            }
+                        }
+                        @RenderBody()
+
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <div style="position:absolute; left:78%; bottom: 1%; opacity:0.2;">
+                    <img src="http://ensyte.com/wp-content/uploads/2018/02/GASTAR-BLUE-1.png" />
+                </div>
+            </footer>
+        </div>
+
+    </div>
+
+    @RenderSection("scripts", required: false)
+</body>
+
+
+</html>

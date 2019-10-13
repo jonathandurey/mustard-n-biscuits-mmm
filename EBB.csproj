@@ -1,0 +1,189 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="App.config" />
+    <Content Remove="Views\Account\Manage.cshtml" />
+    <Content Remove="wwwroot\images\accent.png" />
+    <Content Remove="wwwroot\images\accept.png" />
+    <Content Remove="wwwroot\images\activity.gif" />
+    <Content Remove="wwwroot\images\add.gif" />
+    <Content Remove="wwwroot\images\add.png" />
+    <Content Remove="wwwroot\images\alert-2.gif" />
+    <Content Remove="wwwroot\images\b-cast.png" />
+    <Content Remove="wwwroot\images\back.png" />
+    <Content Remove="wwwroot\images\bullet.png" />
+    <Content Remove="wwwroot\images\cancel.png" />
+    <Content Remove="wwwroot\images\captcha3.png" />
+    <Content Remove="wwwroot\images\cd-arrow.svg" />
+    <Content Remove="wwwroot\images\cd-avatar.png" />
+    <Content Remove="wwwroot\images\cd-logo.svg" />
+    <Content Remove="wwwroot\images\cd-nav-icons.svg" />
+    <Content Remove="wwwroot\images\cd-search.svg" />
+    <Content Remove="wwwroot\images\cfg-pool.gif" />
+    <Content Remove="wwwroot\images\change-pwd.png" />
+    <Content Remove="wwwroot\images\clear.png" />
+    <Content Remove="wwwroot\images\contact-group.gif" />
+    <Content Remove="wwwroot\images\contact.gif" />
+    <Content Remove="wwwroot\images\copy.png" />
+    <Content Remove="wwwroot\images\copy1.gif" />
+    <Content Remove="wwwroot\images\create-userprofile.gif" />
+    <Content Remove="wwwroot\images\cust-target.png" />
+    <Content Remove="wwwroot\images\custgas-day.png" />
+    <Content Remove="wwwroot\images\delete.png" />
+    <Content Remove="wwwroot\images\email-UI.gif" />
+    <Content Remove="wwwroot\images\email-up.png" />
+    <Content Remove="wwwroot\images\Ensyte2.png" />
+    <Content Remove="wwwroot\images\Evrlogo.png" />
+    <Content Remove="wwwroot\images\excel-template.png" />
+    <Content Remove="wwwroot\images\excel.gif" />
+    <Content Remove="wwwroot\images\folder2.gif" />
+    <Content Remove="wwwroot\images\forgot1.png" />
+    <Content Remove="wwwroot\images\gas-quality.gif" />
+    <Content Remove="wwwroot\images\gastar.png" />
+    <Content Remove="wwwroot\images\gpp.gif" />
+    <Content Remove="wwwroot\images\heroAccent.png" />
+    <Content Remove="wwwroot\images\ig-pool.png" />
+    <Content Remove="wwwroot\images\imb-qty.gif" />
+    <Content Remove="wwwroot\images\info.png" />
+    <Content Remove="wwwroot\images\loginnew.png" />
+    <Content Remove="wwwroot\images\logoutnew.png" />
+    <Content Remove="wwwroot\images\nom-lookup.gif" />
+    <Content Remove="wwwroot\images\orderedList0.png" />
+    <Content Remove="wwwroot\images\orderedList1.png" />
+    <Content Remove="wwwroot\images\orderedList2.png" />
+    <Content Remove="wwwroot\images\orderedList3.png" />
+    <Content Remove="wwwroot\images\orderedList4.png" />
+    <Content Remove="wwwroot\images\orderedList5.png" />
+    <Content Remove="wwwroot\images\orderedList6.png" />
+    <Content Remove="wwwroot\images\orderedList7.png" />
+    <Content Remove="wwwroot\images\orderedList8.png" />
+    <Content Remove="wwwroot\images\orderedList9.png" />
+    <Content Remove="wwwroot\images\Peoples logo.jpg" />
+    <Content Remove="wwwroot\images\pool-noms.gif" />
+    <Content Remove="wwwroot\images\pool-summary.gif" />
+    <Content Remove="wwwroot\images\refresh.png" />
+    <Content Remove="wwwroot\images\save.png" />
+    <Content Remove="wwwroot\images\search.png" />
+    <Content Remove="wwwroot\images\targets1.png" />
+    <Content Remove="wwwroot\images\update.png" />
+    <Content Remove="wwwroot\images\view.gif" />
+    <Content Remove="wwwroot\images\weather.gif" />
+    <Content Remove="wwwroot\images\wh-purchase.png" />
+    <Content Remove="wwwroot\images\wh-report.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFilesEx" Version="1.0.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EBBInterfaces\EBBServices.csproj" />
+    <ProjectReference Include="..\EBBModels\EBBModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Account\Manage.cshtml" />
+    <None Include="wwwroot\Content\bootstrap-theme.css" />
+    <None Include="wwwroot\Content\bootstrap-theme.css.map" />
+    <None Include="wwwroot\Content\bootstrap-theme.min.css" />
+    <None Include="wwwroot\Content\bootstrap-theme.min.css.map" />
+    <None Include="wwwroot\Content\bootstrap.css" />
+    <None Include="wwwroot\Content\bootstrap.css.map" />
+    <None Include="wwwroot\Content\bootstrap.min.css" />
+    <None Include="wwwroot\Content\bootstrap.min.css.map" />
+    <None Include="wwwroot\Content\ensytestyle.css" />
+    <None Include="wwwroot\Content\jquery-ui.min.css" />
+    <None Include="wwwroot\Content\jtable.css" />
+    <None Include="wwwroot\Content\LeftNavigationBar.css" />
+    <None Include="wwwroot\Content\LeftNavigationButton.css" />
+    <None Include="wwwroot\Content\monthpicker.css" />
+    <None Include="wwwroot\Content\reset.css" />
+    <None Include="wwwroot\Content\sb-admin-2.css" />
+    <None Include="wwwroot\Content\summernote.css" />
+    <None Include="wwwroot\images\accent.png" />
+    <None Include="wwwroot\images\accept.png" />
+    <None Include="wwwroot\images\activity.gif" />
+    <None Include="wwwroot\images\add.gif" />
+    <None Include="wwwroot\images\add.png" />
+    <None Include="wwwroot\images\alert-2.gif" />
+    <None Include="wwwroot\images\b-cast.png" />
+    <None Include="wwwroot\images\back.png" />
+    <None Include="wwwroot\images\bullet.png" />
+    <None Include="wwwroot\images\cancel.png" />
+    <None Include="wwwroot\images\captcha3.png" />
+    <None Include="wwwroot\images\cd-arrow.svg" />
+    <None Include="wwwroot\images\cd-avatar.png" />
+    <None Include="wwwroot\images\cd-logo.svg" />
+    <None Include="wwwroot\images\cd-nav-icons.svg" />
+    <None Include="wwwroot\images\cd-search.svg" />
+    <None Include="wwwroot\images\cfg-pool.gif" />
+    <None Include="wwwroot\images\change-pwd.png" />
+    <None Include="wwwroot\images\clear.png" />
+    <None Include="wwwroot\images\contact-group.gif" />
+    <None Include="wwwroot\images\contact.gif" />
+    <None Include="wwwroot\images\copy.png" />
+    <None Include="wwwroot\images\copy1.gif" />
+    <None Include="wwwroot\images\create-userprofile.gif" />
+    <None Include="wwwroot\images\cust-target.png" />
+    <None Include="wwwroot\images\custgas-day.png" />
+    <None Include="wwwroot\images\delete.png" />
+    <None Include="wwwroot\images\email-UI.gif" />
+    <None Include="wwwroot\images\email-up.png" />
+    <None Include="wwwroot\images\Ensyte2.png" />
+    <None Include="wwwroot\images\Evrlogo.png" />
+    <None Include="wwwroot\images\excel-template.png" />
+    <None Include="wwwroot\images\excel.gif" />
+    <None Include="wwwroot\images\folder2.gif" />
+    <None Include="wwwroot\images\forgot1.png" />
+    <None Include="wwwroot\images\gas-quality.gif" />
+    <None Include="wwwroot\images\gastar.png" />
+    <None Include="wwwroot\images\gpp.gif" />
+    <None Include="wwwroot\images\heroAccent.png" />
+    <None Include="wwwroot\images\ig-pool.png" />
+    <None Include="wwwroot\images\imb-qty.gif" />
+    <None Include="wwwroot\images\info.png" />
+    <None Include="wwwroot\images\loginnew.png" />
+    <None Include="wwwroot\images\logoutnew.png" />
+    <None Include="wwwroot\images\nom-lookup.gif" />
+    <None Include="wwwroot\images\orderedList0.png" />
+    <None Include="wwwroot\images\orderedList1.png" />
+    <None Include="wwwroot\images\orderedList2.png" />
+    <None Include="wwwroot\images\orderedList3.png" />
+    <None Include="wwwroot\images\orderedList4.png" />
+    <None Include="wwwroot\images\orderedList5.png" />
+    <None Include="wwwroot\images\orderedList6.png" />
+    <None Include="wwwroot\images\orderedList7.png" />
+    <None Include="wwwroot\images\orderedList8.png" />
+    <None Include="wwwroot\images\orderedList9.png" />
+    <None Include="wwwroot\images\Peoples logo.jpg" />
+    <None Include="wwwroot\images\pool-noms.gif" />
+    <None Include="wwwroot\images\pool-summary.gif" />
+    <None Include="wwwroot\images\refresh.png" />
+    <None Include="wwwroot\images\save.png" />
+    <None Include="wwwroot\images\search.png" />
+    <None Include="wwwroot\images\targets1.png" />
+    <None Include="wwwroot\images\update.png" />
+    <None Include="wwwroot\images\view.gif" />
+    <None Include="wwwroot\images\weather.gif" />
+    <None Include="wwwroot\images\wh-purchase.png" />
+    <None Include="wwwroot\images\wh-report.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ensyte.model.nom">
+      <HintPath>..\..\PROD_PNG_052218_old\bin\ensyte.model.nom.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Home\Package.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
+</Project>

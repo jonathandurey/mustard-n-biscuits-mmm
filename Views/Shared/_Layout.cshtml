@@ -1,0 +1,840 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>GASTAR EBB -</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <!-- jquery Core CSS -->
+    <link href="~/Content/jquery-ui.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+
+    <!-- jtable Core CSS -->
+    <link href="~/Content/jtable.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="~/Content/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Timeline CSS -->
+    <link href="~/Content/timeline.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="~/Content/sb-admin-2.css" rel="stylesheet">
+
+    <!-- leftnav bar CSS -->
+    <link href="~/Content/LeftNavigationBar.css" rel="stylesheet">
+
+    <!-- ensytestyle CSS -->
+    <link href="~/Content/ensytestyle.css" rel="stylesheet">
+    <link href="~/Content/LeftNavigationButton.css" rel="stylesheet">    
+
+    <!-- Morris Charts CSS -->
+    <link href="~/Content/morris.css" rel="stylesheet">
+
+    <link href="~/Content/calendar.css" rel="stylesheet">
+
+    <link href="~/Content/summernote.css" rel="stylesheet">
+
+    @*    <link href="~/Content/monthpicker.css" rel="stylesheet">*@
+    <link href="~/Content/MonthPicker.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    @*<link href="~/Content/font-awesome.min.css" rel="stylesheet" type="text/css">*@
+
+    <link rel="stylesheet" href="~/Content/bootstrap.fd.css">
+
+    <link rel="stylesheet" href="~/Content/bootstrap-wysiwyg.css">
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="~/Scripts/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="~/Scripts/raphael-min.js"></script>
+    <script src="~/Scripts/morris.min.js"></script>
+    <script src="~/Scripts/calendar.min.js"></script>
+    <script src="~/Scripts/moment.js"></script>
+
+    <script src="~/Scripts/summernote.js"></script>
+
+    <script src="~/Scripts/ensoft/ensoftjs.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="~/Scripts/sb-admin-2.js"></script>
+
+    @*    <script src="~/Scripts/monthpicker.min.js"></script>*@
+    <script src="~/Scripts/MonthPicker.js"></script>
+
+</head>
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<body>
+    <div onmousemove="SetSessionExpire()" id="pageLevel">
+        <div id="wrapper">
+
+            <!-- Navigation -->
+            <nav class="pageheader navbar navbar-default navbar-static-top" role="navigation">
+                <div class="navbar-header" style="margin-left: 5px">
+
+                        <img src="@Url.Content("~/Images/Peoples logo.jpg")" style="height: 50px; margin-right: 10px" />
+
+                        <img src="@Url.Content("~/Images/Evrlogo.png")" style="height: 50px; margin-right: 10px" />
+                        <img src="@Url.Content("~/Images/gastar.png")" style="height: 50px; margin-right: 10px" />
+          
+                    <br />
+                    <div>
+                        <span style="height: 50px; margin-left: 70px; font-size: 10px"></span>
+                    </div>
+                </div>
+
+                <img src="@Url.Content("~/Images/Ensyte2.png")" style="height: 50px; margin-right: 5px" class="active pull pull-right" />
+
+                <div class="active pull pull-right" style="margin-top: 40px; margin-right: 15px">
+                    <input type="button" class="imagebutton" data-toggle="modal" data-target="#loginWindow" style="background: url('@Url.Content("~/Images/loginnew.png")');" id="btnLogin" title="LogIn" />
+                    <input type="button" class="imagebutton" style="background: url('@Url.Content("~/Images/logoutnew.png")');" id="btnLogout" disabled="disabled" title="Logout" />
+                    <input type="button" class="imagebutton" data-toggle="modal" data-target="#forgotWindow" style="background: url('@Url.Content("~/Images/forgot1.png")');" id="btnForgot" title="Forgot Password" />
+                    <input type="button" class="imagebutton" data-toggle="modal" data-target="#changePwdWindow" style="background: url('@Url.Content("~/Images/change-pwd.png")');" id="btnChange" disabled="disabled" title="change Password" />
+                </div>
+
+
+                <ul class="nav navbar-top-links  loginSection">
+
+
+                    <li class="active pull pull-left" style="margin-left: 5px">
+                        <div class="form-group">
+                            <label>Business Unit:</label>
+                            <select id="cbBusinessUnits" onchange="cbBusinessUnits_OnChange()" name="sessionbu"></select>
+                        </div>
+                    </li>
+                    <li class="active pull pull-left" style="margin-left: 5px">
+                        <div class="input-group">
+                            <label>Gas Flow Month:</label>
+                            @*                            <input type="text" class="datepicker" id="dpAccountingMonthJ" style="height: 25px;" onchange="dpAccountingMonth_OnChange();" />*@
+                            <input type="text" id="dpAccountingMonthJ" style="height: 25px;width:100px" />
+                            @*  <div class="glyphicon glyphicon-calendar"></div>*@
+                        </div>
+                    </li>
+                    <li class="active pull pull-left" style="margin-left: 15px">
+                        <div id="divBaRoles" style="height: 25px;display:None">
+                            <label id="lblBaRoles">Select Role:</label>
+                            <select id="cbBaRoles" style="width: 170px" onchange="cbBaRoles_OnChange()"></select>
+                        </div>
+                    </li>
+                    <li class="active pull pull-left" style="margin-left: 15px">
+                        <div id="divRequester" style="height: 25px;">
+                            <label id="lblBusinessAssociate">Select Party:</label>
+                            <select id="tbBusinessAssociate" style="width: 160px" onchange="cbBusinessAssociates_OnChange()"></select>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="wrapper">
+                <div class="sidebar">
+                    <nav id="sidebar">
+                        <!-- Sidebar Header -->
+                        <div class="sidebar-header ">
+                            <div class="brand"><b>GASTAR EBB </b><span id="colapseId" title="Show/Hide Menu" class="pull-right glyphicon glyphicon-circle-arrow-right"  style="font-size:20px;cursor:pointer;padding-right:3px;padding-top:10px" onclick="openNav()"> </span></div>                           
+                        </div>
+
+                        <!-- Sidebar Links -->
+                        <ul class="list-unstyled components">
+                            <li>
+                                <a href="#" style="padding-left:27px">
+                                    <b>Dashboard </b><i class="fa fa-dashboard fa-lg btn" style="padding-left:145px"></i>
+                                </a>
+                            </li>
+                            <li data-toggle="collapse" data-target="#products" class="collapsed active">
+                                <a href="#">
+                                    <b>Informational Postings </b><i class="fa fa-gift fa-lg btn pull-right" style="padding-left:25px"></i></a>
+                            </li>
+                            <ul class="list-unstyled components" id="products">
+                                <li><a href="@Url.Action("OperationalNotices", "DatePosting")"><b>Operational Notices And Alerts</b><img src="@Url.Content("~/Images/b-cast.png")" class="pull-right" style="margin-top: 5px" /></a></li>
+                                <li id="WeatherGasDayView"><a href="@Url.Action("WeatherGasDayView", "Customer")"><b>Weather Forecast & Observed</b><img src="@Url.Content("~/Images/weather.gif")" class="pull-right" style="margin-top: 5px" /></a></li>
+                            </ul>
+                            <li data-toggle="collapse" data-target="#service" class="collapsed active">
+                                <a href="#" data-toggle="modal" data-target="#loginWindow" id="loginclick"><i class="fa fa-globe fa-lg"></i><b>Shipper Activities </b><span class="arrow"></span></a>
+
+
+                                    <ul class="sub-menu" id="service">
+                                        <li id="supplierListView" style="display:None">
+                                            <a href="@Url.Action("SupplierListView", "ContactList")"><b>Supplier/Marketer Contact List</b><img src="@Url.Content("~/Images/contact.gif")" class="pull-right" style="margin-top: 5px" /></a>
+                                        </li>
+                                        <li id="CustomerListView" style="display:None">
+                                            <a href="@Url.Action("CustomerListView", "Customer")"><b>Display Pool Customer Data</b><img src="@Url.Content("~/Images/contact-group.gif")" class="pull-right" style="margin-top: 5px" /></a>
+                                        </li>
+                                        <li id="EnrollenmentListView" style="display:None">
+                                            <a href="@Url.Action("EnrollmentFormListView", "Customer")"><b>Customer Enrollment</b><img src="@Url.Content("~/Images/create-userprofile.gif")" class="pull-right" style="margin-top: 5px" /></a>
+                                        </li>
+                                        <ul class="sub-menu" id="nominationList" style="display:None">
+                                            <li>
+                                                <a href="@Url.Action("NominationList", "Nomination")"><b>Pool Nominations</b><img src="@Url.Content("~/Images/pool-noms.gif")" class="pull-right" style="margin-top: 5px" /></a>
+                                            </li>
+                                        </ul>
+                                        <ul class="sub-menu" id="DailyImbalanceSummaryListView" style="display:None">
+                                            <li>
+                                                <a href="@Url.Action("DailyImbalanceSummaryListView", "DailyImbalanceSummary")"><b>Daily Pool Report & Invoice</b><img src="@Url.Content("~/Images/imb-qty.gif")" class="pull-right" style="margin-top: 5px" /></a>
+                                            </li>
+                                        </ul>
+                                        <ul class="sub-menu" id="PoolGasDayTargetListView" style="display:None">
+                                            <li>
+                                                <a href="@Url.Action("PoolGasDayTargetListView", "P1Targets")"><b>Non-Daily Pool Report & Invoice</b><img src="@Url.Content("~/Images/targets1.png")" class="pull-right" style="margin-top: 5px" /></a>
+                                            </li>
+                                        </ul>
+                                        <ul>
+                                
+                                                <li class="sub-menu" id="InvoiceSummary" style="display: None">
+                                                    <a href="@Url.Action("InvoiceSummaryList", "Accounting")"><b>Invoice Summary</b><img src="@Url.Content("~/Images/create-userprofile.gif")" class="pull-right" style="margin-top: 5px" /></a>
+                                                </li>
+                                        
+                                        </ul>
+
+                                        <ul class="sub-menu" id="P1TargetsListView" style="display:None">
+                                            <li>
+                                                <a href="@Url.Action("P1TargetListUIView", "P1TargetsList")">
+                                                    <b>Targets List</b>
+                                                    <img src="@Url.Content("~/Images/targets1.png")" class="pull-right" style="margin-top: 5px" />
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <ul class="sub-menu" id="MeterBurnView" style="display:None">
+                                    
+                                                <li>
+                                                    <a href="@Url.Action("MeterBurnView", "MeterBurn")">
+                                                        <b>Daily Burn </b>
+                                                        <img src="@Url.Content("~/Images/gas-quality.gif")" class="pull-right" style="margin-top: 5px" />
+                                                    </a>
+                                                </li>
+
+                                   
+                                                <li>
+                                                    <a href="@Url.Action("MeterBurnView", "MeterBurn")">
+                                                        <b>Meter Burn List</b>
+                                                        <img src="@Url.Content("~/Images/gas-quality.gif")" class="pull-right" style="margin-top: 5px" />
+                                                    </a>
+                                                </li>
+
+                                        </ul>                                       
+                                    </ul>
+
+                                }
+                            </li>
+                       
+                                <li data-toggle="collapse" id="producerActivities" data-target="#producerService" class="collapsed active">
+                                    <a href="#" data-toggle="modal" data-target="#loginWindow" id="loginclick"><i class="fa fa-globe fa-lg"></i><b>Producer Activities </b><span class="arrow"></span></a>
+                               
+                                        <ul class="sub-menu" id="producerService">
+                                            <ul class="sub-menu" id="WHPurchaseListView" style="display:None">
+
+                                                <li>
+                                                    <a href="@Url.Action("WHPurchaseListView", "WHPurchase")"><b>WH Purchase</b><img src="@Url.Content("~/Images/wh-purchase.png")" class="pull-right" style="margin-top: 5px" /></a>
+                                                </li>
+                                            </ul>  
+                                            <ul class="sub-menu" id="MeasurementListView" style="display:None">
+                                                <li>
+                                                    <a href="@Url.Action("MeasurementListView", "Measurement")">
+                                                        <b>Measurement</b>
+                                                        <img src="@Url.Content("~/Images/weather.gif")" class="pull-right" title="Measurement" style="margin-top: 5px" />
+                                                    </a>
+                                                </li>
+                                            </ul>                                          
+                                        </ul>
+                      
+                                </li>
+                     
+                        </ul>
+
+                    </nav>
+                </div>
+            </div>
+        </div>
+        @RenderBody()
+
+        @RenderSection("scripts", required: false)
+
+        <footer class="page-wrapper">
+            <div class="">
+                <p>&copy; @DateTime.Now.Year - www.ensyte.com</p>
+            </div>
+        </footer>
+
+    </div>
+    @using (Html.BeginForm("ValidateLogin", "Home", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "validateForm()" }))
+    {
+
+        <div id='loginWindow' class='modal fade in active' data-backdrop="static">
+     
+        </div>
+
+    }
+
+
+        <div id="forgotWindow" class='modal fade in active' data-backdrop="static">
+
+        </div>
+
+    <div id="changePwdWindow" class='modal fade in active' data-backdrop="static" role="dialog" style="overflow-y: hidden">
+
+    </div>
+
+    @using (Html.BeginForm("ValidateLogin", "Home", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "validateForm()" }))
+    {
+
+        <div id="showUserLogin" class='modal fade in active' data-backdrop="static" role="dialog">
+       
+        </div>
+
+    }
+
+
+</body>
+
+
+<div id="modal-login-Failed" class="modal fade" role="dialog" style="overflow-y: hidden">
+    <div class="modal-dialog modal-md">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header alert-danger" style="height: 5px">
+                @* <h4 class="modal-title">Failed</h4>*@
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <label id="lblstring"></label>
+            </div>
+            <div class="modal-footer" id="modal-footerId">
+                <button type="button" data-dismiss="modal" class="btn btn-primary" id="ok2Proceed">OK</button>
+                <button type="button" class="btn" data-dismiss="modal" id="btnClose1">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-Error" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header alert-danger" style="height: 5px">
+                <label style="height: 5px" id="lblmodalerrortitle"></label>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <label id="lblerrormsg"></label>
+            </div>
+            <div class="modal-footer" id="modal-footer-id">
+                <button type="button" data-dismiss="modal" class="btn btn-primary" id="okToProced">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<div id="modal-login-Failed" class="modal fade">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header alert-danger">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><b>Login Failed</b></h4>
+                </div>
+                <div class="modal-body">
+                    <b> Invalid User Id or Password............</b>
+                </div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>*@
+
+<div id="modal-session-expired" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header alert-danger">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Session Expired</h4>
+            </div>
+            <div class="modal-body">
+                Session Expired login again............
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-success" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header alert-success">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Successful</h4>
+            </div>
+            <div class="modal-body">
+                <p><b>SUCCESS!!!</b> Selected record has been saved successfully</p>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="email-success" class="modal fade">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header alert-success">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Forgot Password Notification</h4>
+            </div>
+            <div class="modal-body">
+                <p><b>SUCCESS!!!</b> Password reset successful and confirmation email sent</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-primary" id="emailok">OK</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--validations -->
+<div class="modal fade" id="validations-failure" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header alert-info">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Required</h4>
+            </div>
+            <div class="modal-body" id="validation-error-message">
+                <p>Please Select Require Fields</p>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-failure" role="dialog" style="overflow-y: hidden">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header alert-danger">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" id="save-error-message-modal-title">Failed</h4>
+            </div>
+            <div class="modal-body" id="save-error-message">
+                <p><b>FAILED!!!</b> There is some problem in saving the record. Please try again later.</p>
+            </div>
+            <div class="modal-footer" hidden="hidden" id="save-error-message_ok">
+                <button type="button" data-dismiss="modal" class="btn btn-primary">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Failure -->
+<div class="modal fade" id="modal-failure-4Bu" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header alert-info">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Required</h4>
+            </div>
+            <div class="modal-body" id="error-messages">
+                <p><b>FAILED!!!</b>Please Select Provider to Proceed.</p>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-failure-4Mail" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header alert-info">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Mail Notification</h4>
+            </div>
+            <div class="modal-body" id="error-messages3">
+                <p>E-Mail Sent Successfully to the Registered Mail ID.</p>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-failure-4Mail" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header alert-info">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Mail Notification</h4>
+            </div>
+            <div class="modal-body" id="error-messages3">
+                <p>E-Mail Sent Successfully to the Registered Mail ID.</p>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Delete Success -->
+<div class="modal fade" id="modal-delete" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header alert-success">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Successful</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <label id="lblMessageDelete"><b>SUCCESS!!!</b> Selected record has been deleted successfully</label>
+                </p>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Failure -->
+<div class="modal fade" id="modal-delete-failure" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header alert-danger">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Failed</h4>
+            </div>
+            <div class="modal-body" id="error-message">
+                <p><b>FAILED!!!</b> There is some problem in deleting the record. Please try again later.</p>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Delete Confirmation -->
+<div id="modal-delete-confirm" class="modal fade">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header alert-success">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Delete Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                Are you sure, you want to delete the selected record?
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-primary" id="delete">Delete</button>
+                <button type="button" data-dismiss="modal" class="btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div id="modal-Email-confirm" class="modal fade">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header alert-success">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Email Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                Password will be reset and confirmation email will be sent to the email address specified in the contact details. Click OK to proceed.
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-primary" id="emailConfirmation">OK</button>
+                <button type="button" data-dismiss="modal" class="btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-ok-confirm" class="modal fade">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header alert-success">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Save Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                Click Ok to Save the Changes.
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-primary" id="ok">OK</button>
+                <button type="button" data-dismiss="modal" class="btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-Validate-confirm" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header alert-danger">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Validate</h4>
+            </div>
+            <div class="modal-body" id="validate-error-message">
+                <p><b>Validate!!!</b>  Please try again later.</p>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>
+
+<style>
+    .scroll-content {
+        overflow-y: auto;
+        width: 100%;      
+    }
+
+
+    div.jtable-main-container {
+        height: 100%;
+    }
+
+    .modal-title {
+        margin: 0;
+        text-align: center;
+    }
+
+    .modal.fade .modal-dialog {
+         /*-webkit-transition: -webkit-transform .3s ease-out;
+        -o-transition: -o-transform .3s ease-out;
+        transition: transform .3s ease-out;
+        -webkit-transform: translate(0, -25%);
+        -ms-transform: translate(0, -25%);
+        -o-transform: translate(0, -25%);
+        transform: translate(0, -25%);
+        margin-left: 300px;
+        margin-top: 200px;
+        font-size: 12px;
+        width: 785px;
+        height: 500px;*/
+        -webkit-transition: -webkit-transform .3s ease-out;  
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+        border: 1px solid #999;
+        border: 1px solid rgba(0, 0, 0, .2);
+        border-radius: 6px;
+        outline: 0;
+        width: 785px;
+        -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+        box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+    }
+
+    .modal-content {
+        position: relative;
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+        border: 1px solid #999;
+        border: 1px solid rgba(0, 0, 0, .2);
+        border-radius: 6px;
+        outline: 0;
+        -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+        box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+    }
+
+    div.jtable-main-container table.jtable tbody > tr {
+        background: #fff;
+        height: 10px;
+    }
+
+        div.jtable-main-container table.jtable tbody > tr.jtable-row-even {
+            background: #c3e0f4;
+            height: 10px;
+        }
+
+    div.jtable-main-container table.jtable thead th {
+        vertical-align: middle;
+        text-align: center;
+        background-color: lightskyblue;
+        color: black;
+    }
+
+
+    div.jtable-main-container > div.jtable-bottom-panel {
+        position: relative;
+        height: 15px;
+        text-align: left;
+        font-size: 10px;
+        background: lightskyblue;
+        font-weight: bold;
+        color: black;
+    }
+  </style>
+<script src="~/Scripts/bootstrap.fd.js"></script>
+<script>
+    //Global Variables - Only variables to be used across NEW EBB.
+
+    var g_is_admin = true;
+    var g_ba_id = '';
+    var g_bu_id = '';
+    var g_bu_name =  '';
+    var g_accounting_month =  '';
+    var g_accounting_month_f = '';
+    var g_ba_role_cd = '';
+    var g_user =  '';
+
+    //alert('GET SESSION :: g_bu_id: ' + g_bu_id + ' g_accounting_month: ' + g_accounting_month + ' g_ba_role_cd: ' + g_ba_role_cd + ' g_ba_id: ' + g_ba_id);
+
+    document.getElementById("dpAccountingMonthJ").value = g_accounting_month == '' ? '@DateTime.Now.ToString("MMM yyyy")' : g_accounting_month_f
+</script>
+
+<script type="text/javascript">
+
+    $('#dpAccountingMonthJ').MonthPicker({
+        ShowIcon: false, MonthFormat: 'M yy',
+        OnAfterChooseMonth: function (selectedDate) {
+            dpAccountingMonth_OnChange();
+            // Do something with selected JavaScript date.
+            // console.log(selectedDate);
+        }
+    });
+
+    $('.jtable').wrap('<div class="jtable-main-container scroll-content" />');
+
+    var adminBusinessassoc = false;
+
+    if (!String.prototype.startsWith) {
+        String.prototype.startsWith = function (searchString, position) {
+            position = position || 0;
+            return this.indexOf(searchString, position) === position;
+        };
+    }
+
+    $(document).ready(function () {             
+        $(document).ajaxStart(function () {
+        });
+
+        DefaultDisableNavBarList();
+
+        PopulateBusinessUnitsComboBox();
+
+        EnableOrDisable4Admin();
+        EnableDisable4LoginBaName();
+
+        htmlbodyHeightUpdate();
+        $(window).resize(function () {
+            htmlbodyHeightUpdate()
+        });
+
+        $(window).scroll(function () {
+            height2 = $('.main').height()
+            htmlbodyHeightUpdate()
+        });
+    });
+
+    function openNav() {
+        $('#sidebar').toggleClass('active');      
+        $('#colapseId').toggleClass('glyphicon-circle-arrow-left');
+    }
+
+    function PopulateBusinessUnitsComboBox() {
+        try {
+            var busSession = null;
+
+            if (busSession == null || busSession == '') {
+                $.post('@Url.Action("GetBusinessUnitsComboBoxValues", "Home")?ba_Id=' + g_ba_id, {}, function (chartdata, status) {
+                    ParseAndPopulateBusinessUnits(chartdata);
+                })
+            }
+            else {
+                var deserializedJson = JSON.parse(busSession.replace(/&quot;/g, '"'));
+                ParseAndPopulateBusinessUnits(deserializedJson)
+            }
+        } catch (e) { alert(e.message); }
+    }
+
+    function ParseAndPopulateBusinessUnits(chartdata) {
+        $('#cbBusinessUnits').empty();
+
+        for (key in chartdata) {
+            if (chartdata.hasOwnProperty(key) && key != null && key != "") {
+                $('#cbBusinessUnits').append($('<option>').text(chartdata[key]).attr('value', key));
+                if (g_bu_id != '') {
+                    if (key == g_bu_id) {
+                        $('#cbBusinessUnits').val(g_bu_id);
+                    }
+                }
+                else {
+                    if (g_bu_id == '') {
+                        document.body.style.cursor = "default";
+                        g_bu_id = key;
+                        $('#cbBusinessUnits').val(g_bu_id);
+                    }
+                }
+            }
+        }
+        g_bu_id = $('#cbBusinessUnits').val();
+        PopulateBaRoles();
+        PopulateBAComboBox4SelectedBU();
+    }
+
+    function PopulateBaRoles() {
+        try {
+            var buId = $('#cbBusinessUnits').val();
+            var baRolesSession = null;
+
+            if (baRolesSession == null || baRolesSession == '') {
+                $.post('@Url.Action("PopulatingRoles", "Home")?buId=' + buId, {}, function (chartdata, status) {
+                    ParseAndPopulateBaRoles(chartdata)
+                });
+            }
+            else {
+                var deserializedJson = JSON.parse(baRolesSession.replace(/&quot;/g, '"'));
+                ParseAndPopulateBaRoles(deserializedJson)
+            }
+        } catch (e) { alert(e.message); }
+    }
+
+    function ParseAndPopulateBaRoles(chartdata) {
+        $('#cbBaRoles').empty();
+        for (var key in chartdata) {
+            if (chartdata.hasOwnProperty(key) && key != null && key != "") {
+                $('#cbBaRoles').append($('<option>').text(chartdata[key]).attr('value', key));
+                if (g_ba_role_cd != '') {
+                    if (key == g_ba_role_cd) {
+                        $('#cbBaRoles').val(g_ba_role_cd);
+                    }
+                }
+                else {
+                    if (g_ba_role_cd == '') {
+                        document.body.style.cursor = "default";
+                        g_ba_role_cd = key;
+                        $('#cbBaRoles').val(g_ba_role_cd);
+                    }
+                }
+            }
+        }
+
+        g_ba_role_cd = $('#cbBaRoles').val();
+        EnableOrDisableBAsBasedOnRoles();
+        //alert('SetSessionBUAndMonth1');
+        SetSessionBUAndMonth(true);
+    }
+
+</script>
