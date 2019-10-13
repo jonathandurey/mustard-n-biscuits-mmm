@@ -1,0 +1,61 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Castle.Activerecord" Version="3.0.0.1" />
+    <PackageReference Include="Castle.Core" Version="4.4.0" />
+    <PackageReference Include="Castle.Windsor" Version="5.0.1" />
+    <PackageReference Include="Iesi.Collections" Version="1.0.1" />
+    <PackageReference Include="LinFu.DynamicProxy" Version="2.1.2" />
+    <PackageReference Include="LinFu.DynamicProxy.OfficialRelease" Version="1.0.4" />
+    <PackageReference Include="NHibernate.ByteCode.LinFu" Version="1.1.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EBBEntities\EBBEntities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ensyte.common.model">
+      <HintPath>..\..\PROD_PNG_052218_old\bin\ensyte.common.model.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="ensyte.model">
+      <HintPath>..\..\PROD_PNG_052218_old\bin\ensyte.model.dll</HintPath>
+    </Reference>
+    <Reference Include="ensyte.model.accounting">
+      <HintPath>..\..\PROD_PNG_052218_old\bin\ensyte.model.accounting.dll</HintPath>
+    </Reference>
+    <Reference Include="ensyte.model.caprel">
+      <HintPath>..\..\PROD_PNG_052218_old\bin\ensyte.model.caprel.dll</HintPath>
+    </Reference>
+    <Reference Include="ensyte.model.flowinggas">
+      <HintPath>..\..\PROD_PNG_052218_old\bin\ensyte.model.flowinggas.dll</HintPath>
+    </Reference>
+    <Reference Include="ensyte.model.infopostings">
+      <HintPath>..\..\PROD_PNG_052218_old\bin\ensyte.model.infopostings.dll</HintPath>
+    </Reference>
+    <Reference Include="ensyte.model.nom">
+      <HintPath>..\..\PROD_PNG_052218_old\bin\ensyte.model.nom.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="ensyte.process">
+      <HintPath>..\..\PROD_PNG_052218_old\bin\ensyte.process.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\PROD_PNG_052218_old\bin\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.LinFu, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4">
+      <HintPath>..\..\PROD_PNG_052218_old\bin\NHibernate.ByteCode.LinFu.dll</HintPath>
+      <Private>true</Private>
+      <SpecificVersion>true</SpecificVersion>
+    </Reference>
+  </ItemGroup>
+
+</Project>
