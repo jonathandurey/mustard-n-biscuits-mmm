@@ -1,0 +1,192 @@
+@using EBBModels.Models;
+@model PackageViewModel
+@{
+    ViewData["Title"] = "Package";
+    Layout = "~/Views/Shared/_GasTarLayout.cshtml";
+}
+<style>
+    .center_div {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .buttonGroup {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    html,
+    body {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        text-shadow:5px 5px 5px #808080;
+    }
+
+    .box {
+        display: flex;
+        position: absolute;
+       text-align:right;
+       margin-left:100px;
+        color:#0026ff;
+    }
+
+        .box .inner {
+            width: 425px;
+            height: 100px;
+            line-height: 100px;
+            font-size: 2em;
+            font-family: sans-serif;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            color:#0026ff;
+        }
+
+            .box .inner:first-child {
+                background-color: transparent;
+              color:#0026ff;
+                transform-origin: right;
+                transform: perspective(100px) rotateY(-15deg);
+                text-shadow:-5px -5px -5px #808080;
+            }
+
+            .box .inner:last-child {
+                background-color: transparent;
+             color:#0026ff;
+                transform-origin: left;
+                transform: perspective(100px) rotateY(15deg);
+                text-shadow:-5px -5px -5px #808080;
+            }
+
+            .box .inner span {
+                position: absolute;
+                animation: marquee 5s linear infinite;
+            }
+
+            .box .inner:first-child span {
+                animation-delay: 2.6s;
+                left: -100%;
+            }
+
+    @@keyframes marquee {
+        from {
+            left: 100%;
+        }
+
+        to {
+            left: -100%;
+        }
+    }
+</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script>
+    $(function () {
+        $('#btnSubmit').click(function (e) {
+            var id = $('#ID').val();
+            if (id === '') {
+                alert('Please enter a valid id.');
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        $('#lnkOriginalGastar').click(function () {
+             window.location = "http://ebb2.ensyte.com/ENSRCnew?packageID=" + $('#ID').val();
+        });
+    });
+</script>
+
+
+@using (Html.BeginForm("SearchPackage", "Home", FormMethod.Post))
+{
+    <div class="center_div">
+        <h4 class="shadow-label">Search for Package Record</h4>
+        <div class="well">
+            <div class="box">
+                <div class="inner">
+                    @{var displayText = "Enter Package ID and click search.";
+                        if (!string.IsNullOrEmpty(Model.COMMENTS))
+                        {
+                            displayText = Model.COMMENTS;
+                        }
+                    }
+
+                    <span>@displayText</span>
+                </div>
+                <div class="inner">
+                    <span>@displayText</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+
+
+                    <br />
+                    <div style="width:80%;">
+
+                        @Html.TextBoxFor(m => m.ID)
+                    </div>
+                </div>
+            </div>
+            <br />
+            @*<div style="position:absolute; left:78%; bottom: 45%;">
+            <img src="http://www.ensyte.com/wp-content/uploads/2012/05/gas.png" />
+        </div>*@
+            <br />
+            <div class="row buttonGroup">
+
+                <button type="submit" class="btn btn-primary" id="btnSubmit"><i class="fa fa-search" style="margin-right:5px;"></i>Search</button>
+
+                @if (!string.IsNullOrEmpty(Model.BusinessAssociateName))
+                {
+                    <button type="button" class="btn btn-success" value="Edit Record" data-toggle="modal" data-target="#modalEditPackage">Edit Package</button>
+
+                }
+            </div>
+        </div>
+
+    </div>
+}
+
+<div id="modalEditPackage" class="modal fade" role="dialog">
+    @using (Html.BeginForm("SavePackage", "Home", FormMethod.Post))
+    {
+        @Html.HiddenFor(m => m.ID)
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Edit Package</h4>
+                </div>
+                <div class="container">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Comments</label>
+                                <br />
+                                @Html.TextBoxFor(m => m.COMMENTS, new { @style = "width:300px;" })
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success" id="btnSave">Save</button>
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
