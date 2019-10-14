@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EBBDataServices\EBBDataServices.csproj" />
+    <ProjectReference Include="..\EBBModels\EBBModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ensyte.model.nom">
+      <HintPath>..\..\PROD_PNG_052218_old\bin\ensyte.model.nom.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>
